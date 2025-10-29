@@ -1,10 +1,10 @@
 import { createRoot } from "react-dom/client";
 import { RecoilRoot } from "recoil";
-import App from "./App.tsx";
-import "./index.css";
+import { RouterProvider } from "react-router-dom";
+import router from "./router.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <RecoilRoot>
-    <App />
+    <RouterProvider router={router}/>
   </RecoilRoot>
 );
