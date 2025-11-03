@@ -1,10 +1,13 @@
+import { useNavigate } from "react-router-dom";
 import "../../css/mainpagecss/mainpage.css";
+import * as F from "../../style/Footer";
 import * as S from "../../style/Topbar";
 import study from "../img/공부.png";
 import c1 from "../img/원1.png";
 import c2 from "../img/원2.png";
 import c3 from "../img/원3.png";
 function Mainpages() {
+  const navigate = useNavigate();
   return (
     <div>
       <div className="Tmain">
@@ -14,7 +17,7 @@ function Mainpages() {
             <p className="projectname">Rezension</p>
           </div>
           <div className="login">
-            <button className="loginbt">로그인</button>
+            <button className="loginbt" onClick={()=>navigate('/login')}>로그인</button>
             <button className="sinupbt">회원가입</button>
           </div>
         </S.Topbar>
@@ -31,8 +34,8 @@ function Mainpages() {
                   작은 노력도 모이면 큰 성장이 됩니다.
                 </p>
                 <div className="btcon">
-                  <button className="gostart">지금시작하기</button>
-                  <button className="loginbts">로그인</button>
+                  <button className="gostart" onClick={()=>navigate('/login')}>지금시작하기</button>
+                  <button className="loginbts">회원가입</button>
                 </div>
               </div>
             </div>
@@ -79,8 +82,54 @@ function Mainpages() {
           </div>
         </div>
       </div>
-
-      <div className="Bmain"></div>
+      <div className="Bmain">
+        <div className="Q">
+          <div className="titlecon">
+            <p className="qtitle">자주 묻는 질문</p>
+            <p className="qsubtitle">
+              Rezension에 대해 궁금한 점들을 확인보세요
+            </p>
+          </div>
+          <div className="Qcon">
+            <div className="qcon">
+              <p className="atitle">Rezension는 무료로 사용할 수 있나요?</p>
+              <p className="a">
+                네,기본 기능은 무료로 제공합니다. 더많은 고급기능을 원하시면
+                프리미엄 플랜이 있습니다.
+              </p>
+            </div>
+            <div className="qcon">
+              <p className="atitle">AI 퀴즈는 어떻게 생성되나요?</p>
+              <p className="a">
+                작성하는 노트의 내용을 AI가 분석하고, 이를 바탕으로 다양한
+                유형의 퀴즈를 자동생성합니다.
+              </p>
+            </div>
+            <div className="qcon">
+              <p className="atitle">데이터는 안전하게 보관되나요?</p>
+              <p className="a">
+                모든 데이터는 암호화되어 안전하게 저장되며,개인정보보호 정책에
+                따라 엄격하게 관리됩니다.
+              </p>
+            </div>
+          </div>
+        </div>
+        <F.Footer>
+          <div className="Ftitle">Rezension</div>
+          <div className="any">
+            <p className="l">대구광역시 달성군 구지면 창리로11길 93 </p>
+            <p className="l">
+              93, Changri-ro 11-gil, Guji-myeon, Dalseong-gun, Daegu, Republic
+              of Korea
+            </p>
+            <p className="d">
+              ⓒ Rezension | 이메일 : Rezension@gmail.com | 전화번호 :
+              010-1234-5678
+            </p>
+            <p className="d">이용약관 문의하기 개인정보처리방침 웹접근성정책</p>
+          </div>
+        </F.Footer>
+      </div>
     </div>
   );
 }
