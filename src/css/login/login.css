@@ -1,3 +1,49 @@
+/* ✅ 토스트 메시지 스타일 */
+.toast {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  z-index: 9999;
+  animation: fadeInOut 3s ease-in-out;
+}
+
+.toast-success {
+  background-color: #4caf50;
+  color: white;
+  box-shadow: 0 4px 10px rgba(76, 175, 80, 0.3);
+}
+
+.toast-error {
+  background-color: #f44336;
+  color: white;
+  box-shadow: 0 4px 10px rgba(244, 67, 54, 0.3);
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -20px);
+  }
+  10% {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+  90% {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -20px);
+  }
+}
+
+/* ✅ 기본 설정 */
 * {
   margin: 0;
   padding: 0;
@@ -5,13 +51,14 @@
 }
 
 body {
-  font-family: pretandard !important;
+  font-family: 'Pretendard', sans-serif; /* Pretandard 오타 수정 및 명확화 */
   background-color: #e5e7eb;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 }
 
+/* ✅ 전체 컨테이너 */
 .container {
   width: 100vw;
   height: 100vh;
@@ -22,12 +69,13 @@ body {
   overflow: hidden;
 }
 
+/* ✅ 헤더 */
 .header {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  padding: 1.5rem 2rem;
+  padding: 1.2rem 2rem;
   background-color: #e5e7eb;
   display: flex;
   align-items: center;
@@ -46,10 +94,12 @@ body {
   justify-content: center;
 }
 
-.logo-icon {
-  width: 24px;
-  height: 24px;
-  color: white;
+/* 🖼️ 아이콘 이미지 스타일 */
+.logo-box > .logo-img { 
+    width: 25px; /* 크기 조정 */
+    height: 25px; /* 크기 조정 */
+    object-fit: contain;
+    filter: invert(100%); /* 아이콘이 흰색으로 보이도록 필터 적용 */
 }
 
 .header-title {
@@ -58,6 +108,7 @@ body {
   color: #111827;
 }
 
+/* ✅ 메인 콘텐츠 */
 .main-content {
   flex: 1;
   width: 100%;
@@ -65,9 +116,10 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 2rem;
+  padding: 6rem 2rem 2rem;
 }
 
+/* ✅ 로그인 래퍼 */
 .login-wrapper {
   width: 100%;
   max-width: 520px;
@@ -83,10 +135,11 @@ body {
 }
 
 .main-title {
-  font-size: 48px;
+  font-size: 2.8rem;
   font-weight: 800;
   color: #111827;
   margin-bottom: 1rem;
+  line-height: 1.2;
 }
 
 .signup-text {
@@ -101,27 +154,31 @@ body {
   cursor: pointer;
   text-decoration: none;
   font-weight: 600;
-  font-size: 16px;
+  font-size: 1.125rem; /* .signup-text와 일관성 유지 */
+  padding: 0;
 }
 
 .signup-link:hover {
   text-decoration: underline;
 }
 
-.login-card {
+/* ✅ 카드 (로그인 폼 영역) 개선 */
+.login-card1 {
   background-color: white;
-  border-radius: 1rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  border-radius: 1.5rem; /* 모서리 더 둥글게 */
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); /* 부드럽고 눈에 띄는 그림자 */
   width: 100%;
-  max-width: 22rem;
-  min-height: 23rem;
+  max-width: 20rem; /* 카드 폭 약간 증가 */
+  min-height: 22rem; /* 최소 높이 증가 */
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding: 2rem 0;
+  padding: 0 !important; /* 내부 상하 여백 증가 */
 }
-
+.one{
+    margin: 1rem;
+}
 .form-group {
   margin-bottom: 1.5rem;
   width: 100%;
@@ -151,7 +208,7 @@ body {
 }
 
 .form-input::placeholder {
-  color: #d1d5db;
+  color: #9ca3af; /* placeholder 색상 좀 더 진하게 */
 }
 
 .form-input:focus {
@@ -159,9 +216,11 @@ body {
   box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
 }
 
+/* ✅ 비밀번호 찾기 (forgot-password) 섹션 스타일 */
 .forgot-password {
   text-align: center;
-  margin-bottom: 1.5rem;
+  padding-top: 0.5rem;
+  margin: 0 !important;
 }
 
 .forgot-link {
@@ -172,76 +231,103 @@ body {
   text-decoration: none;
   font-size: 0.938rem;
   font-weight: 500;
+  padding: 0;
 }
 
 .forgot-link:hover {
   text-decoration: underline;
 }
 
-.login-button {
+/* ✅ 로그인 버튼 스타일 개선 */
+.login-button1 {
   width: 80%;
   padding: 0.875rem;
   background-color: #2563eb;
   color: white;
   border: none;
-  border-radius: 0.5rem;
-  font-size: 1rem;
-  font-weight: 600;
+  border-radius: 0.75rem; 
+  font-size: 1.05rem; /* 글자 크기 약간 키움 */
+  font-weight: 700; /* 글자 굵기 증가 */
   cursor: pointer;
   transition: all 0.2s ease;
+  margin-bottom: 1rem !important;
+  margin: 0px ;
 }
 
-.login-button:hover {
+.login-button1:hover:not(:disabled) {
   background-color: #1d4ed8;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+  transform: translateY(-2px); /* 더 극적인 효과 */
+  box-shadow: 0 6px 15px rgba(37, 99, 235, 0.4);
+  margin-bottom: 1rem !important;
+  margin: 0px;
 }
 
-.login-button:active {
+.login-button1:disabled { /* 비활성화 상태 스타일 */
+  background-color: #93c5fd; /* 밝은 파란색으로 변경 */
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+  opacity: 0.8;
+  margin-bottom: 1rem !important;
+  margin: 0px;
+}
+
+.login-button1:active:not(:disabled) {
   transform: translateY(0);
+  box-shadow: 0 2px 5px rgba(37, 99, 235, 0.4);
+  margin-bottom: 1rem !important;
+  margin: 0px;
 }
 
+/* 🔴 로그인 버튼 비활성화 상태일 때 :active 효과 제거 (수정된 부분) */
+.login-button1:disabled:active {
+  transform: none;
+  box-shadow: none;
+}
+
+
+/* ✅ 반응형 */
 @media (max-width: 768px) {
-  .main-title {
-    font-size: 2.5rem;
-  }
-
-  .login-card {
-    max-width: 20rem;
-    min-height: 21rem;
-  }
-
-  .logo-box {
-    width: 40px;
-    height: 40px;
-  }
-
-  .logo-icon {
-    width: 20px;
-    height: 20px;
-  }
-
   .header-title {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
+  }
+
+  .main-title {
+    font-size: 2.2rem;
+  }
+
+  .login-card1 {
+    max-width: 18rem; /* 조정 */
+    min-height: 20rem; /* 조정 */
+  }
+
+  .main-content {
+    padding-top: 5.5rem;
   }
 }
 
 @media (max-width: 480px) {
   .header {
-    padding: 1rem 1.5rem;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: 0.8rem 1.2rem;
   }
 
   .main-title {
-    font-size: 2rem;
+    font-size: 1.8rem;
   }
 
   .signup-text {
     font-size: 1rem;
   }
 
-  .login-card {
-    max-width: 18rem;
-    min-height: 20rem;
+  .signup-link {
+    font-size: 1rem;
+  }
+
+  .login-card1 {
+    max-width: 17rem;
+    min-height: 19rem;
     padding: 1.5rem 0;
   }
 
@@ -251,6 +337,7 @@ body {
 
   .login-button {
     padding: 0.75rem;
+    margin: 0 !important;
   }
 
   .logo-box {
@@ -258,12 +345,16 @@ body {
     height: 35px;
   }
 
-  .logo-icon {
-    width: 18px;
-    height: 18px;
+  .logo-box > .logo-img {
+    width: 20px;
+    height: 20px;
   }
 
   .header-title {
     font-size: 1.3rem;
+  }
+
+  .main-content {
+    padding-top: 5rem;
   }
 }

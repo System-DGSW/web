@@ -2,10 +2,10 @@ import { useNavigate } from "react-router-dom";
 import "../../css/mainpagecss/mainpage.css";
 import * as F from "../../style/Footer";
 import * as S from "../../style/Topbar";
-import study from "../img/공부.png";
-import c1 from "../img/원1.png";
-import c2 from "../img/원2.png";
-import c3 from "../img/원3.png";
+import study from "/public/img/공부.png";
+import c1 from "../../../public/img/원1.png";
+import c2 from "../../../public/img/원2.png";
+import c3 from "../../../public/img/원3.png";
 function Mainpages() {
   const navigate = useNavigate();
   return (
@@ -18,7 +18,7 @@ function Mainpages() {
           </div>
           <div className="login">
             <button className="loginbt" onClick={()=>navigate('/login')}>로그인</button>
-            <button className="sinupbt">회원가입</button>
+            <button className="sinupbt" onClick={()=> navigate('/signup')}>회원가입</button>
           </div>
         </S.Topbar>
         <div className="Fcon">
@@ -35,7 +35,7 @@ function Mainpages() {
                 </p>
                 <div className="btcon">
                   <button className="gostart" onClick={()=>navigate('/login')}>지금시작하기</button>
-                  <button className="loginbts">회원가입</button>
+                  <button className="loginbts" onClick={()=>navigate('/signup')}>회원가입</button>
                 </div>
               </div>
             </div>

@@ -1,0 +1,331 @@
+/* ✅ 토스트 메시지 스타일 */
+.toast {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  z-index: 9999;
+  animation: fadeInOut 3s ease-in-out;
+}
+
+.toast-success {
+  background-color: #4caf50;
+  color: white;
+  box-shadow: 0 4px 10px rgba(76, 175, 80, 0.3);
+}
+
+.toast-error {
+  background-color: #f44336;
+  color: white;
+  box-shadow: 0 4px 10px rgba(244, 67, 54, 0.3);
+}
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -20px);
+  }
+  10% {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+  90% {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -20px);
+  }
+}
+
+/* ✅ 기본 설정 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: pretandard, sans-serif;
+  background-color: #e5e7eb;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ✅ 전체 컨테이너 */
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* ✅ 헤더 */
+.header {
+  position: fixed; /* 변경됨: absolute → fixed */
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 1.2rem 2rem;
+  background-color: #e5e7eb;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 1.2rem;
+  z-index: 10;
+  box-shadow: none;
+}
+
+.logo-box {
+  width: 45px;
+  height: 45px;
+  background-color: #2563eb;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-icon {
+  width: 24px;
+  height: 24px;
+  color: white;
+}
+
+.header-title {
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: #111827;
+}
+
+/* ✅ 메인 콘텐츠 */
+.main-content {
+  flex: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 6rem 2rem 2rem; /* 헤더 공간 확보 */
+}
+
+/* ✅ 로그인 래퍼 */
+.login-wrapper {
+  width: 100%;
+  max-width: 520px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.title-section {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.main-title {
+  font-size: 2.8rem;
+  font-weight: 800;
+  color: #111827;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.signup-text {
+  font-size: 1.125rem;
+  color: #6b7280;
+}
+
+.signup-link {
+  color: #2563eb;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.signup-link:hover {
+  text-decoration: underline;
+}
+
+/* ✅ 카드 */
+.login-card {
+  background-color: white;
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  width: 100%;
+  max-width: 22rem;
+  min-height: 25rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 2rem !important;
+  padding-bottom: 0 !important;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-label {
+  width: 80%;
+  text-align: start;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #111827;
+  margin-bottom: 0.5rem;
+}
+
+.form-input {
+  width: 80%;
+  padding: 0.875rem 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.form-input::placeholder {
+  color: #d1d5db;
+}
+
+.form-input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.forgot-password {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.forgot-link {
+  color: #2563eb;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 0.938rem;
+  font-weight: 500;
+}
+
+.forgot-link:hover {
+  text-decoration: underline;
+}
+
+.login-button2 {
+  width: 80%;
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin: 0 !important;
+  margin-bottom:  1.8rem !important;
+  padding:0.8rem 0;
+}
+
+.login-button2:hover {
+  background-color: #1d4ed8;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+.login-button2:active {
+  transform: translateY(0);
+}
+
+/* ✅ 반응형 */
+@media (max-width: 768px) {
+  .header-title {
+    font-size: 1.4rem;
+  }
+
+  .main-title {
+    font-size: 2.2rem;
+  }
+
+  .login-card{
+    max-width: 20rem;
+    min-height: 23rem;
+  }
+
+  .main-content {
+    padding-top: 5.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: 0.8rem 1.2rem;
+  }
+
+  .main-title {
+    font-size: 1.8rem;
+  }
+
+  .signup-text {
+    font-size: 1rem;
+  }
+
+  .login-card {
+    max-width: 18rem;
+    min-height: 22rem;
+    padding: 1.5rem 0;
+    padding-bottom: 0 !important;
+  }
+
+  .form-group {
+    margin-bottom: 1.25rem;
+  }
+
+  .login-button {
+    padding: 0.75rem;
+  }
+
+  .logo-box {
+    width: 35px;
+    height: 35px;
+  }
+
+  .logo-icon {
+    width: 18px;
+    height: 18px;
+  }
+
+  .header-title {
+    font-size: 1.3rem;
+  }
+
+  .main-content {
+    padding-top: 5rem; /* 헤더 가림 방지 */
+  }
+}
+img{
+    width: 3rem;
+    height: 3rem;
+}
