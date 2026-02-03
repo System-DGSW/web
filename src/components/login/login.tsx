@@ -2,6 +2,7 @@ import axios from "axios";
 import type { ChangeEvent, KeyboardEvent } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Eye, EyeOff } from "lucide-react"; // 👈 아이콘 추가
 import icon from "../../../public/아이콘.png";
 import "../../css/login/login.css";
 
@@ -27,6 +28,7 @@ export default function Login() {
   const [form, setForm] = useState<FormData>({ username: "", password: "" });
   const [toast, setToast] = useState<Toast>({ message: "", type: "" });
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [showPw, setShowPw] = useState<boolean>(false); // 👈 비밀번호 보기 상태
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { id, value } = e.target;
@@ -102,16 +104,25 @@ export default function Login() {
 
             <div className="login-form-group">
               <label htmlFor="password">비밀번호</label>
-              <input
-                id="password"
-                type="password"
-                value={form.password}
-                onChange={handleChange}
-                onKeyDown={handleKeyPress}
-                placeholder="비밀번호를 입력하세요"
-                className="login-form-input"
-                disabled={isLoading}
-              />
+              <div className="login-pw-wrapper">
+                <input
+                  id="password"
+                  type={showPw ? "text" : "password"}
+                  value={form.password}
+                  onChange={handleChange}
+                  onKeyDown={handleKeyPress}
+                  placeholder="비밀번호를 입력하세요"
+                  className="login-form-input"
+                  disabled={isLoading}
+                />
+                <button 
+                  type="button" 
+                  className="login-pw-toggle" 
+                  onClick={() => setShowPw(!showPw)}
+                >
+                  {showPw ? <EyeOff size={20} /> : <Eye size={20} />}
+                </button>
+              </div>
             </div>
 
             <button

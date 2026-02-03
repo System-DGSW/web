@@ -1,6 +1,7 @@
 import type { ChangeEvent, KeyboardEvent } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Eye, EyeOff } from "lucide-react"; // 👈 아이콘 추가
 import icon from "../../../public/아이콘.png";
 import "../../css/login/signup.css";
 import axiosInstance from "../../api/axiosInstance";
@@ -29,6 +30,10 @@ export default function Signup() {
 
   const [toast, setToast] = useState<Toast>({ message: "", type: "" });
   const [isLoading, setIsLoading] = useState<boolean>(false);
+
+  // 🔹 비밀번호 보기 상태 (각각 독립적으로 제어)
+  const [showPw, setShowPw] = useState<boolean>(false);
+  const [showConfirmPw, setShowConfirmPw] = useState<boolean>(false);
 
   const showToast = (message: string, type: "success" | "error" = "error") => {
     setToast({ message, type });
@@ -84,33 +89,33 @@ export default function Signup() {
   };
 
   return (
-    <div className="container">
+    <div className="signup-page-container">
       {toast.message && (
-        <div className={`toast toast-${toast.type}`}>{toast.message}</div>
+        <div className={`signup-toast signup-toast-${toast.type}`}>{toast.message}</div>
       )}
 
-      <header className="header">
-        <div className="logo-box" onClick={() => navigate("/")} style={{ cursor: "pointer" }}>
+      <header className="signup-header">
+        <div className="signup-logo-box" onClick={() => navigate("/")} style={{ cursor: "pointer" }}>
           <img src={icon} alt="logo" />
         </div>
-        <h1 className="header-title">Rezension</h1>
+        <h1 className="signup-header-title">Rezension</h1>
       </header>
 
-      <main className="main-content">
-        <div className="login-wrapper">
-          <div className="title-section">
-            <h2 className="main-title">회원가입</h2>
+      <main className="signup-main-content">
+        <div className="signup-wrapper">
+          <div className="signup-title-section">
+            <h2 className="signup-main-title">회원가입</h2>
             <p className="signup-text">
               이미 계정이 있으신가요?{" "}
-              <button className="signup-link" onClick={() => navigate("/login")}>
+              <button className="signup-link-btn" onClick={() => navigate("/login")}>
                 로그인하기
               </button>
             </p>
           </div>
 
-          <div className="login-card">
-            {/* 폼 그룹 시작 */}
-            <div className="form-group">
+          <div className="signup-card-box">
+            {/* 아이디 */}
+            <div className="signup-form-group">
               <label htmlFor="username">아이디</label>
               <input
                 id="username"
@@ -119,43 +124,64 @@ export default function Signup() {
                 onChange={handleChange}
                 onKeyDown={handleKeyPress}
                 placeholder="아이디를 입력하세요"
-                className="form-input"
+                className="signup-form-input"
                 autoComplete="username"
                 disabled={isLoading}
               />
             </div>
 
-            <div className="form-group">
+            {/* 비밀번호 */}
+            <div className="signup-form-group">
               <label htmlFor="password">비밀번호</label>
-              <input
-                id="password"
-                type="password"
-                value={form.password}
-                onChange={handleChange}
-                onKeyDown={handleKeyPress}
-                placeholder="비밀번호를 입력하세요"
-                className="form-input"
-                autoComplete="new-password"
-                disabled={isLoading}
-              />
+              <div className="signup-pw-wrapper">
+                <input
+                  id="password"
+                  type={showPw ? "text" : "password"}
+                  value={form.password}
+                  onChange={handleChange}
+                  onKeyDown={handleKeyPress}
+                  placeholder="비밀번호를 입력하세요"
+                  className="signup-form-input"
+                  autoComplete="new-password"
+                  disabled={isLoading}
+                />
+                <button 
+                  type="button" 
+                  className="signup-pw-toggle" 
+                  onClick={() => setShowPw(!showPw)}
+                >
+                  {showPw ? <EyeOff size={20} /> : <Eye size={20} />}
+                </button>
+              </div>
             </div>
 
-            <div className="form-group">
+            {/* 비밀번호 확인 */}
+            <div className="signup-form-group">
               <label htmlFor="confirmPassword">비밀번호 확인</label>
-              <input
-                id="confirmPassword"
-                type="password"
-                value={form.confirmPassword}
-                onChange={handleChange}
-                onKeyDown={handleKeyPress}
-                placeholder="비밀번호를 다시 입력하세요"
-                className="form-input"
-                autoComplete="new-password"
-                disabled={isLoading}
-              />
+              <div className="signup-pw-wrapper">
+                <input
+                  id="confirmPassword"
+                  type={showConfirmPw ? "text" : "password"}
+                  value={form.confirmPassword}
+                  onChange={handleChange}
+                  onKeyDown={handleKeyPress}
+                  placeholder="비밀번호를 다시 입력하세요"
+                  className="signup-form-input"
+                  autoComplete="new-password"
+                  disabled={isLoading}
+                />
+                <button 
+                  type="button" 
+                  className="signup-pw-toggle" 
+                  onClick={() => setShowConfirmPw(!showConfirmPw)}
+                >
+                  {showConfirmPw ? <EyeOff size={20} /> : <Eye size={20} />}
+                </button>
+              </div>
             </div>
 
-            <div className="form-group">
+            {/* 이메일 */}
+            <div className="signup-form-group">
               <label htmlFor="email">이메일 주소</label>
               <input
                 id="email"
@@ -164,7 +190,7 @@ export default function Signup() {
                 onChange={handleChange}
                 onKeyDown={handleKeyPress}
                 placeholder="이메일을 입력하세요"
-                className="form-input"
+                className="signup-form-input"
                 autoComplete="email"
                 disabled={isLoading}
               />
@@ -172,7 +198,7 @@ export default function Signup() {
 
             <button
               onClick={handleSignup}
-              className={`login-button2 ${isLoading ? "loading" : ""}`}
+              className={`signup-submit-button ${isLoading ? "loading" : ""}`}
               disabled={isLoading}
             >
               {isLoading ? "처리 중..." : "회원가입"}

@@ -1,189 +1,177 @@
-/* ✅ 토스트 메시지 스타일 */
-.toast {
-  position: fixed;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 12px 24px;
-  border-radius: 8px;
-  font-size: 1rem;
-  font-weight: 600;
-  z-index: 9999;
-  animation: fadeInOut 3s ease-in-out;
-}
-
-.toast-success {
-  background-color: #4caf50;
-  color: white;
-  box-shadow: 0 4px 10px rgba(76, 175, 80, 0.3);
-}
-
-.toast-error {
-  background-color: #f44336;
-  color: white;
-  box-shadow: 0 4px 10px rgba(244, 67, 54, 0.3);
-}
-
-@keyframes fadeInOut {
-  0% { opacity: 0; transform: translate(-50%, -20px); }
-  10% { opacity: 1; transform: translate(-50%, 0); }
-  90% { opacity: 1; transform: translate(-50%, 0); }
-  100% { opacity: 0; transform: translate(-50%, -20px); }
-}
-
-/* ✅ 기본 설정 */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: pretandard, sans-serif;
-  background-color: #e5e7eb;
-  min-height: 100vh;
-}
-
-/* ✅ 전체 컨테이너 */
-.container {
+/* ✅ 회원가입 전용 페이지 레이아웃 */
+.signup-page-container {
   width: 100vw;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  overflow: hidden;
+  background-color: #e5e7eb;
+  margin: 0;
+  padding: 0;
 }
 
-/* ✅ 헤더 */
-.header {
+/* ✅ 헤더 스타일 */
+.signup-header {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   padding: 1.2rem 2rem;
-  background-color: #e5e7eb;
   display: flex;
   align-items: center;
   gap: 12px;
   z-index: 10;
 }
 
-.logo-box {
-  width: 45px;
-  height: 45px;
+.signup-logo-box {
+  width: 40px;
+  height: 40px;
   background-color: #2563eb;
-  border-radius: 12px;
+  border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
 }
 
-.logo-box img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+.signup-logo-box img {
+  width: 80%;
+  height: 80%;
+  object-fit: contain;
 }
 
-.header-title {
-  font-size: 1.75rem;
+.signup-header-title {
+  font-size: 1.5rem;
   font-weight: 800;
   color: #111827;
 }
 
-/* ✅ 메인 콘텐츠 */
-.main-content {
-  flex: 1;
+/* ✅ 메인 섹션 */
+.signup-main-content {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding-top: 5rem;
+  padding-top: 4rem;
 }
 
-/* ✅ 로그인 래퍼 */
-.login-wrapper {
+.signup-wrapper {
   width: 100%;
-  max-width: 520px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  max-width: 380px; /* 로그인보다 살짝 넓게 잡음 */
 }
 
-.title-section {
+.signup-title-section {
   text-align: center;
   margin-bottom: 1.5rem;
 }
 
-.main-title {
-  font-size: 2.5rem;
+.signup-main-title {
+  font-size: 2.2rem;
   font-weight: 800;
   color: #111827;
   margin-bottom: 0.5rem;
 }
 
 .signup-text {
-  font-size: 1rem;
+  font-size: 0.95rem;
   color: #6b7280;
 }
 
-.signup-link {
+.signup-link-btn {
   color: #2563eb;
   background: none;
   border: none;
   cursor: pointer;
   font-weight: 600;
+  margin-left: 5px;
+  text-decoration: none;
 }
 
-/* ✅ 카드 */
-.login-card {
+.signup-link-btn:hover {
+  text-decoration: underline;
+}
+
+/* ✅ 회원가입 카드 */
+.signup-card-box {
   background-color: white;
   border-radius: 1rem;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
   width: 100%;
-  max-width: 24rem;
-  padding: 2.5rem 0;
+  padding: 2rem 1.5rem;
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 
-/* 🔹 핵심 수정 부분: 폼 그룹 */
-.form-group {
-  margin-bottom: 1.2rem;
+/* ✅ 폼 그룹 - 라벨 왼쪽 상단 고정 */
+.signup-form-group {
+  margin-bottom: 1rem;
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center; /* 내부 요소(label, input)들을 중앙 배치 */
+  align-items: flex-start; /* 글자를 왼쪽 끝으로 */
 }
 
-.form-group label {
-  width: 85%; /* 인풋창과 동일한 너비 설정 */
-  text-align: left; /* 글자를 왼쪽 끝으로 */
-  font-size: 0.9rem;
+.signup-form-group label {
+  font-size: 0.85rem;
   font-weight: 600;
   color: #374151;
   margin-bottom: 0.4rem;
+  padding-left: 2px;
 }
 
-.form-input {
-  width: 85%;
-  padding: 0.8rem 1rem;
+/* ✅ 비밀번호 래퍼 (아이콘 배치를 위해 중요) */
+.signup-pw-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.signup-form-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
   border: 1px solid #d1d5db;
   border-radius: 0.5rem;
-  font-size: 1rem;
+  font-size: 0.95rem;
   outline: none;
-  transition: border-color 0.2s;
+  box-sizing: border-box;
+  transition: all 0.2s;
 }
 
-.form-input:focus {
+/* 비밀번호 인풋창은 아이콘 자리를 위해 오른쪽 여백 추가 */
+.signup-pw-wrapper .signup-form-input {
+  padding-right: 2.8rem;
+}
+
+.signup-form-input:focus {
   border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
 }
 
-.login-button2 {
-  width: 85%;
+/* ✅ 눈 모양 아이콘 버튼 스타일 */
+.signup-pw-toggle {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #9ca3af;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  z-index: 10;
+  transition: color 0.2s;
+}
+
+.signup-pw-toggle:hover {
+  color: #2563eb;
+}
+
+/* ✅ 회원가입 버튼 */
+.signup-submit-button {
+  width: 100%;
   background-color: #2563eb;
   color: white;
   border: none;
@@ -192,11 +180,43 @@ body {
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
-  margin-top: 1rem;
+  margin-top: 0.8rem;
+  transition: background-color 0.2s;
 }
 
-.login-button2:hover {
+.signup-submit-button:hover:not(:disabled) {
   background-color: #1d4ed8;
 }
 
-/* 반응형 생략 (필요시 기존 코드 유지) */
+.signup-submit-button:disabled {
+  background-color: #93c5fd;
+  cursor: not-allowed;
+}
+
+/* ✅ 회원가입 전용 토스트 메시지 */
+.signup-toast {
+  position: fixed;
+  top: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 12px 24px;
+  border-radius: 8px;
+  color: white;
+  font-weight: 600;
+  z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  font-size: 0.9rem;
+}
+
+.signup-toast-success { background-color: #10b981; }
+.signup-toast-error { background-color: #ef4444; }
+
+/* ✅ 반응형 (모바일 최적화) */
+@media (max-width: 480px) {
+  .signup-wrapper {
+    max-width: 90%;
+  }
+  .signup-main-title {
+    font-size: 1.8rem;
+  }
+}

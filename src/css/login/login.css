@@ -6,12 +6,12 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background-color: #e5e7eb; /* 배경 회색 */
+  background-color: #e5e7eb;
   margin: 0;
   padding: 0;
 }
 
-/* ✅ 헤더 (회원가입창 스타일 계승) */
+/* ✅ 헤더 */
 .login-header {
   position: fixed;
   top: 0;
@@ -46,7 +46,7 @@
   color: #111827;
 }
 
-/* ✅ 메인 콘텐츠 - 너비 최소화 */
+/* ✅ 메인 콘텐츠 - 너비 제어의 핵심 */
 .login-main-content {
   width: 100%;
   display: flex;
@@ -55,8 +55,8 @@
 }
 
 .login-wrapper {
-  width: 100%;
-  max-width: 320px; /* 👈 너비를 더 좁게 설정 */
+  width: 90%; /* 모바일 대응 */
+  max-width: 340px; /* 👈 로그인창 전체 너비를 여기서 결정 (기존 320에서 살짝 키움) */
 }
 
 .login-title-section {
@@ -65,7 +65,7 @@
 }
 
 .login-main-title {
-  font-size: 2rem; /* 제목 크기도 약간 조정 */
+  font-size: 2rem;
   font-weight: 800;
   color: #111827;
   margin-bottom: 0.5rem;
@@ -85,25 +85,26 @@
   margin-left: 5px;
 }
 
-/* ✅ 로그인 카드 */
+/* ✅ 로그인 카드 - 찌그러짐 해결 */
 .login-card-box {
   background-color: white;
   border-radius: 1rem;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
-  width: 60%;
-  padding: 2.5rem 1.8rem; /* 카드 내부 여백 */
+  width: 100%; /* 👈 60%에서 100%로 수정하여 꽉 채움 */
+  padding: 2.5rem 1.8rem; 
   display: flex;
   flex-direction: column;
   align-items: center;
+  box-sizing: border-box;
 }
 
-/* ✅ 입력 그룹 - 왼쪽 정렬 */
+/* ✅ 입력 그룹 */
 .login-form-group {
   margin-bottom: 1.2rem;
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: flex-start; /* 👈 글자를 왼쪽 끝으로 */
+  align-items: flex-start;
 }
 
 .login-form-group label {
@@ -114,14 +115,36 @@
   padding-left: 2px;
 }
 
+/* ✅ 비밀번호 래퍼 */
+.login-pw-wrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.login-pw-toggle {
+  position: absolute;
+  right: 12px;
+  background: none;
+  border: none;
+  color: #9ca3af;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+}
+
 .login-form-input {
   width: 100%;
   padding: 0.75rem 1rem;
+  padding-right: 2.8rem; /* 아이콘 자리 */
   border: 1px solid #d1d5db;
   border-radius: 0.5rem;
   font-size: 0.95rem;
   outline: none;
-  box-sizing: border-box; /* 패딩이 너비를 키우지 않도록 함 */
+  box-sizing: border-box;
   transition: border-color 0.2s;
 }
 
@@ -130,7 +153,7 @@
   box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
 }
 
-/* ✅ 버튼 - 인풋창과 너비 동일 */
+/* ✅ 버튼 */
 .login-submit-button {
   width: 100%;
   background-color: #2563eb;
@@ -143,11 +166,6 @@
   cursor: pointer;
   margin-top: 0.5rem;
   margin-bottom: 1rem;
-  transition: background-color 0.2s;
-}
-
-.login-submit-button:hover:not(:disabled) {
-  background-color: #1d4ed8;
 }
 
 .login-submit-button:disabled {
@@ -155,37 +173,9 @@
   cursor: not-allowed;
 }
 
-/* ✅ 기타 링크 */
-.login-forgot-password {
-  text-align: center;
-}
-
-.login-forgot-link {
-  color: #6b7280;
-  background: none;
-  border: none;
-  font-size: 0.8rem;
-  cursor: pointer;
-}
-
-.login-forgot-link:hover {
-  text-decoration: underline;
-  color: #2563eb;
-}
-
-/* ✅ 토스트 메시지 */
-.login-toast {
-  position: fixed;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 10px 20px;
-  border-radius: 6px;
-  color: white;
-  font-weight: 600;
-  z-index: 100;
-  font-size: 0.9rem;
-}
-
+/* ✅ 하단 링크 및 토스트 */
+.login-forgot-password { text-align: center; }
+.login-forgot-link { color: #6b7280; background: none; border: none; font-size: 0.8rem; cursor: pointer; }
+.login-toast { position: fixed; top: 20px; left: 50%; transform: translateX(-50%); padding: 10px 20px; border-radius: 6px; color: white; font-weight: 600; z-index: 100; font-size: 0.9rem; }
 .login-toast-success { background-color: #10b981; }
 .login-toast-error { background-color: #ef4444; }
