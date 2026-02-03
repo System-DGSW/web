@@ -107,7 +107,7 @@ function Mainpages() {
         </F.Footer>
       </div>
     </div>
-  );
+  );//응애
 }
 
 export default Mainpages;
