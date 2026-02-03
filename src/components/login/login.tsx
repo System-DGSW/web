@@ -3,7 +3,7 @@ import type { ChangeEvent, KeyboardEvent } from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import icon from "../../../public/아이콘.png";
-import "../../css/login/login.css"; 
+import "../../css/login/login.css";
 
 interface FormData {
   username: string;
@@ -25,7 +25,7 @@ export default function Login() {
   const navigate = useNavigate();
   const [form, setForm] = useState<FormData>({
     username: "",
-    password: ""
+    password: "",
   });
 
   const [toast, setToast] = useState<Toast>({ message: "", type: "" });
@@ -53,34 +53,27 @@ export default function Login() {
     try {
       const loginData = {
         username: form.username,
-        password: form.password
+        password: form.password,
       };
-      // ✨ 개선: POST 요청 경로를 실제 로그인 경로로 확인 및 수정 (예: /auth/login)
-      await api.post("/auth/signin", loginData); 
-      setForm({ username: "", password: ""});
+      await api.post("/auth/signin", loginData);
+      setForm({ username: "", password: "" });
       showToast("로그인 성공! 환영합니다.", "success");
-      setTimeout(()=>{
-        navigate('/')
-      },1500)
-
+      setTimeout(() => {
+        navigate("/main/home");
+      }, 1500);
     } catch (err: any) {
-      const errorMessage =
-        err.response?.data?.message; // 에러 메시지 구체화
+      const errorMessage = err.response?.data?.message;
       showToast(errorMessage, "error");
     } finally {
       setIsLoading(false);
     }
   };
-
-  /** 🔹 엔터 키 입력 시 */
   const handleKeyPress = (e: KeyboardEvent<HTMLInputElement>) => {
-    // ✨ 개선: 로그인 버튼 로직 실행
     if (e.key === "Enter") handleLogin();
   };
 
   return (
     <div className="container">
-      {/* ✅ 토스트 메시지 */}
       {toast.message && (
         <div
           className={`toast ${
@@ -93,7 +86,7 @@ export default function Login() {
 
       {/* ✅ 헤더 */}
       <header className="header">
-          <img src={icon} alt="logo" className="logo-img" /> 
+        <img src={icon} alt="logo" className="logo-img" />
         <h1 className="header-title">Rezension</h1>
       </header>
 
@@ -103,11 +96,11 @@ export default function Login() {
           <div className="title-section">
             <h2 className="main-title">로그인</h2>
             <p className="signup-text">
-              계정이 없으신가요?{" "} {/* ✨ 개선: 텍스트 변경 */}
+              계정이 없으신가요? {/* ✨ 개선: 텍스트 변경 */}
               <button
                 className="signup-link"
                 // ✨ 개선: 회원가입 페이지로 이동하도록 경로 수정
-                onClick={() => navigate("/signup")} 
+                onClick={() => navigate("/signup")}
               >
                 회원가입하기
               </button>
@@ -154,10 +147,13 @@ export default function Login() {
             >
               {isLoading ? "로그인 중..." : "로그인"}
             </button>
-            
+
             {/* ✅ 비밀번호 찾기 (UX 개선을 위한 추가 요소) */}
             <div className="forgot-password">
-              <button className="forgot-link" onClick={() => navigate("/forgot-password")}>
+              <button
+                className="forgot-link"
+                onClick={() => navigate("/forgot-password")}
+              >
                 비밀번호를 잊으셨나요?
               </button>
             </div>

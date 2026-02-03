@@ -10,9 +10,8 @@ export const Sidebar = styled.div`
     top: 0px;
     left: 0px;
     height: 100vh;
-    width: 18rem;
-    background-color: #ffff;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); 
+    width: 16rem;
+    background-color: #ffffff;
     @media (max-width: 1024px) {
         width: 15rem; 
     }
