@@ -1,360 +1,191 @@
-/* ✅ 토스트 메시지 스타일 */
-.toast {
-  position: fixed;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 12px 24px;
-  border-radius: 8px;
-  font-size: 1rem;
-  font-weight: 600;
-  z-index: 9999;
-  animation: fadeInOut 3s ease-in-out;
-}
-
-.toast-success {
-  background-color: #4caf50;
-  color: white;
-  box-shadow: 0 4px 10px rgba(76, 175, 80, 0.3);
-}
-
-.toast-error {
-  background-color: #f44336;
-  color: white;
-  box-shadow: 0 4px 10px rgba(244, 67, 54, 0.3);
-}
-
-@keyframes fadeInOut {
-  0% {
-    opacity: 0;
-    transform: translate(-50%, -20px);
-  }
-  10% {
-    opacity: 1;
-    transform: translate(-50%, 0);
-  }
-  90% {
-    opacity: 1;
-    transform: translate(-50%, 0);
-  }
-  100% {
-    opacity: 0;
-    transform: translate(-50%, -20px);
-  }
-}
-
-/* ✅ 기본 설정 */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: 'Pretendard', sans-serif; /* Pretandard 오타 수정 및 명확화 */
-  background-color: #e5e7eb;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-/* ✅ 전체 컨테이너 */
-.container {
+/* ✅ 로그인 전용 레이아웃 */
+.login-page-container {
   width: 100vw;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  overflow: hidden;
+  background-color: #e5e7eb; /* 배경 회색 */
+  margin: 0;
+  padding: 0;
 }
 
-/* ✅ 헤더 */
-.header {
+/* ✅ 헤더 (회원가입창 스타일 계승) */
+.login-header {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   padding: 1.2rem 2rem;
-  background-color: #e5e7eb;
   display: flex;
   align-items: center;
   gap: 12px;
-  font-size: 1.2rem;
-  z-index: 10;
 }
 
-.logo-box {
-  width: 45px;
-  height: 45px;
+.login-logo-box {
+  width: 40px;
+  height: 40px;
   background-color: #2563eb;
-  border-radius: 12px;
+  border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 }
 
-/* 🖼️ 아이콘 이미지 스타일 */
-.logo-box > .logo-img { 
-    width: 25px; /* 크기 조정 */
-    height: 25px; /* 크기 조정 */
-    object-fit: contain;
-    filter: invert(100%); /* 아이콘이 흰색으로 보이도록 필터 적용 */
+.login-logo-box img {
+  width: 80%;
+  height: 80%;
+  object-fit: contain;
 }
 
-.header-title {
-  font-size: 1.75rem;
+.login-header-title {
+  font-size: 1.5rem;
   font-weight: 800;
   color: #111827;
 }
 
-/* ✅ 메인 콘텐츠 */
-.main-content {
-  flex: 1;
+/* ✅ 메인 콘텐츠 - 너비 최소화 */
+.login-main-content {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding: 6rem 2rem 2rem;
 }
 
-/* ✅ 로그인 래퍼 */
 .login-wrapper {
   width: 100%;
-  max-width: 520px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  max-width: 320px; /* 👈 너비를 더 좁게 설정 */
 }
 
-.title-section {
+.login-title-section {
   text-align: center;
-  margin-bottom: 2rem;
-}
-
-.main-title {
-  font-size: 2.8rem;
-  font-weight: 800;
-  color: #111827;
-  margin-bottom: 1rem;
-  line-height: 1.2;
-}
-
-.signup-text {
-  font-size: 1.125rem;
-  color: #6b7280;
-}
-
-.signup-link {
-  color: #2563eb;
-  background: none;
-  border: none;
-  cursor: pointer;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 1.125rem; /* .signup-text와 일관성 유지 */
-  padding: 0;
-}
-
-.signup-link:hover {
-  text-decoration: underline;
-}
-
-/* ✅ 카드 (로그인 폼 영역) 개선 */
-.login-card1 {
-  background-color: white;
-  border-radius: 1.5rem; /* 모서리 더 둥글게 */
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); /* 부드럽고 눈에 띄는 그림자 */
-  width: 100%;
-  max-width: 20rem; /* 카드 폭 약간 증가 */
-  min-height: 22rem; /* 최소 높이 증가 */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  padding: 0 !important; /* 내부 상하 여백 증가 */
-}
-.one{
-    margin: 1rem;
-}
-.form-group {
   margin-bottom: 1.5rem;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
 
-.form-label {
-  width: 80%;
-  text-align: start;
-  font-size: 1rem;
-  font-weight: 600;
+.login-main-title {
+  font-size: 2rem; /* 제목 크기도 약간 조정 */
+  font-weight: 800;
   color: #111827;
   margin-bottom: 0.5rem;
 }
 
-.form-input {
-  width: 80%;
-  padding: 0.875rem 1rem;
-  border: 1px solid #d1d5db;
-  border-radius: 0.5rem;
-  font-size: 1rem;
-  outline: none;
-  transition: all 0.2s ease;
+.login-signup-text {
+  font-size: 0.9rem;
+  color: #6b7280;
 }
 
-.form-input::placeholder {
-  color: #9ca3af; /* placeholder 색상 좀 더 진하게 */
-}
-
-.form-input:focus {
-  border-color: #2563eb;
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
-}
-
-/* ✅ 비밀번호 찾기 (forgot-password) 섹션 스타일 */
-.forgot-password {
-  text-align: center;
-  padding-top: 0.5rem;
-  margin: 0 !important;
-}
-
-.forgot-link {
+.login-signup-link {
   color: #2563eb;
   background: none;
   border: none;
   cursor: pointer;
-  text-decoration: none;
-  font-size: 0.938rem;
-  font-weight: 500;
-  padding: 0;
+  font-weight: 600;
+  margin-left: 5px;
 }
 
-.forgot-link:hover {
-  text-decoration: underline;
+/* ✅ 로그인 카드 */
+.login-card-box {
+  background-color: white;
+  border-radius: 1rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  width: 60%;
+  padding: 2.5rem 1.8rem; /* 카드 내부 여백 */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-/* ✅ 로그인 버튼 스타일 개선 */
-.login-button1 {
-  width: 80%;
-  padding: 0.875rem;
+/* ✅ 입력 그룹 - 왼쪽 정렬 */
+.login-form-group {
+  margin-bottom: 1.2rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* 👈 글자를 왼쪽 끝으로 */
+}
+
+.login-form-group label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #374151;
+  margin-bottom: 0.4rem;
+  padding-left: 2px;
+}
+
+.login-form-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  font-size: 0.95rem;
+  outline: none;
+  box-sizing: border-box; /* 패딩이 너비를 키우지 않도록 함 */
+  transition: border-color 0.2s;
+}
+
+.login-form-input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+/* ✅ 버튼 - 인풋창과 너비 동일 */
+.login-submit-button {
+  width: 100%;
   background-color: #2563eb;
   color: white;
   border: none;
-  border-radius: 0.75rem; 
-  font-size: 1.05rem; /* 글자 크기 약간 키움 */
-  font-weight: 700; /* 글자 굵기 증가 */
+  border-radius: 0.5rem;
+  padding: 0.85rem 0;
+  font-size: 1rem;
+  font-weight: 600;
   cursor: pointer;
-  transition: all 0.2s ease;
-  margin-bottom: 1rem !important;
-  margin: 0px ;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+  transition: background-color 0.2s;
 }
 
-.login-button1:hover:not(:disabled) {
+.login-submit-button:hover:not(:disabled) {
   background-color: #1d4ed8;
-  transform: translateY(-2px); /* 더 극적인 효과 */
-  box-shadow: 0 6px 15px rgba(37, 99, 235, 0.4);
-  margin-bottom: 1rem !important;
-  margin: 0px;
 }
 
-.login-button1:disabled { /* 비활성화 상태 스타일 */
-  background-color: #93c5fd; /* 밝은 파란색으로 변경 */
+.login-submit-button:disabled {
+  background-color: #93c5fd;
   cursor: not-allowed;
-  transform: none;
-  box-shadow: none;
-  opacity: 0.8;
-  margin-bottom: 1rem !important;
-  margin: 0px;
 }
 
-.login-button1:active:not(:disabled) {
-  transform: translateY(0);
-  box-shadow: 0 2px 5px rgba(37, 99, 235, 0.4);
-  margin-bottom: 1rem !important;
-  margin: 0px;
+/* ✅ 기타 링크 */
+.login-forgot-password {
+  text-align: center;
 }
 
-/* 🔴 로그인 버튼 비활성화 상태일 때 :active 효과 제거 (수정된 부분) */
-.login-button1:disabled:active {
-  transform: none;
-  box-shadow: none;
+.login-forgot-link {
+  color: #6b7280;
+  background: none;
+  border: none;
+  font-size: 0.8rem;
+  cursor: pointer;
 }
 
-
-/* ✅ 반응형 */
-@media (max-width: 768px) {
-  .header-title {
-    font-size: 1.4rem;
-  }
-
-  .main-title {
-    font-size: 2.2rem;
-  }
-
-  .login-card1 {
-    max-width: 18rem; /* 조정 */
-    min-height: 20rem; /* 조정 */
-  }
-
-  .main-content {
-    padding-top: 5.5rem;
-  }
+.login-forgot-link:hover {
+  text-decoration: underline;
+  color: #2563eb;
 }
 
-@media (max-width: 480px) {
-  .header {
-    flex-direction: row;
-    justify-content: flex-start;
-    padding: 0.8rem 1.2rem;
-  }
-
-  .main-title {
-    font-size: 1.8rem;
-  }
-
-  .signup-text {
-    font-size: 1rem;
-  }
-
-  .signup-link {
-    font-size: 1rem;
-  }
-
-  .login-card1 {
-    max-width: 17rem;
-    min-height: 19rem;
-    padding: 1.5rem 0;
-  }
-
-  .form-group {
-    margin-bottom: 1.25rem;
-  }
-
-  .login-button {
-    padding: 0.75rem;
-    margin: 0 !important;
-  }
-
-  .logo-box {
-    width: 35px;
-    height: 35px;
-  }
-
-  .logo-box > .logo-img {
-    width: 20px;
-    height: 20px;
-  }
-
-  .header-title {
-    font-size: 1.3rem;
-  }
-
-  .main-content {
-    padding-top: 5rem;
-  }
+/* ✅ 토스트 메시지 */
+.login-toast {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 10px 20px;
+  border-radius: 6px;
+  color: white;
+  font-weight: 600;
+  z-index: 100;
+  font-size: 0.9rem;
 }
+
+.login-toast-success { background-color: #10b981; }
+.login-toast-error { background-color: #ef4444; }
