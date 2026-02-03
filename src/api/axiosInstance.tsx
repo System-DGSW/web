@@ -25,7 +25,7 @@ let failedQueue: FailedRequest[] = [];
 // 큐 프로세싱 함수
 const processQueue = (
   error: Error | null,
-  token: string | null = null,
+  _token: string | null = null,
 ): void => {
   failedQueue.forEach((prom) => {
     if (error) {
