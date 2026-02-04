@@ -3,7 +3,7 @@ import NoteForm from "./noteform";
 import QuizSettings from "./quizsetting";
 import PublishSettings from "./publishSetting";
 import WriteTips from "./writeTip";
-
+//응애
 function Add() {
   return (
     <S.AC>
