@@ -14,7 +14,7 @@ function Note() {
             <S.NNoteSummary>{item.summary}</S.NNoteSummary>
           </S.NContentWrapper>
           <S.NViewButton>보기</S.NViewButton>
-        </S.NNoteCard>
+        </S.NNoteCard>//히히
       ))}
     </S.NHcon>
   );
