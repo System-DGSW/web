@@ -1,15 +1,17 @@
-import { createBrowserRouter } from "react-router-dom";
-import Loginmain from "./pages/loginmain/loginmain";
-import Add from "./pages/Maincomponents/Add";
-import HomePage from "./pages/Maincomponents/HomePage";
-import Note from "./pages/Maincomponents/Note";
-import Profile from "./pages/Maincomponents/Profile";
+import { createBrowserRouter} from "react-router-dom";
+import Loginmain from "./pages/loginmain";
+import Addpage from "./pages/addpage";
+import Note from "./pages/notepage";
+import Profile from "./pages/profilepage";
 import Login from "./pages/signin";
 import Signup from "./pages/signup";
+import HomePage from "./pages/homepage/index";
+import Mainpages from "./pages/mainpage/index";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <HomePage />,
+    element: <Mainpages />,
+    
   },
   {
     path: "/login",
@@ -29,7 +31,7 @@ const router = createBrowserRouter([
       },
       {
         path: "add",
-        element: <Add />,
+        element: <Addpage />,
       },
       {
         path: "note",

@@ -1,0 +1,1 @@
+export type ActiveType = "home" | "note" | "add" | "profile" | "";
