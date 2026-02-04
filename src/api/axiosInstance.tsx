@@ -11,7 +11,7 @@ interface FailedRequest {
 }
 
 const axiosInstance: AxiosInstance = axios.create({
-  baseURL: import.meta.env.VITE_SERVER_URL,
+  baseURL: import.meta.env.VITE_Sign_URL,
   withCredentials: true,
   headers: {
     "Content-Type": "application/json",
