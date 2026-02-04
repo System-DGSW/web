@@ -1,20 +1,15 @@
 import { createBrowserRouter } from "react-router-dom";
-import App from "./App";
-import Login from "./components/login/login";
-import Signup from "./components/login/signup";
-import Loginmain from "./components/loginmain/loginmain";
-import Add from "./components/Maincomponents/Add";
-import HomePage from "./components/Maincomponents/HomePage";
-import Note from "./components/Maincomponents/Note";
-import Profile from "./components/Maincomponents/Profile";
+import Loginmain from "./pages/loginmain/loginmain";
+import Add from "./pages/Maincomponents/Add";
+import HomePage from "./pages/Maincomponents/HomePage";
+import Note from "./pages/Maincomponents/Note";
+import Profile from "./pages/Maincomponents/Profile";
+import Login from "./pages/signin";
+import Signup from "./pages/signup";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
-    children: [{
-        index: true,
-        element: <HomePage />,
-    }],
+    element: <HomePage />,
   },
   {
     path: "/login",

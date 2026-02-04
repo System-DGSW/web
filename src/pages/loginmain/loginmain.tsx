@@ -2,29 +2,29 @@ import { useEffect, useState } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import "../../css/loginmain/loginmain.css";
 
-// 아이콘 임포트
-import RH from "../../img/Icon/RH.svg";
-import RL from "../../img/Icon/RL.svg";
-import RN from "../../img/Icon/RN.svg";
-import RP from "../../img/Icon/RP.svg";
-import RPR from "../../img/Icon/RPR.svg";
-import { Sidebar } from "../../style/Side";
+// 아이콘 임포트 (타입 정의에 따라 이미 컴포넌트로 인식됨)
+import RHome from "../../shared/img/FTS/Rhome.svg";
+import Rlogout from "../../shared/img/FTS/Rlogout.svg";
+import Rnote from "../../shared/img/FTS/Rnote.svg";
+import RPnote from "../../shared/img/FTS/RPnote.svg";
+import Rprofile from "../../shared/img/FTS/Rprofile.svg";
+import { Sidebar } from "../../shared/style/Side";
 
-// 1. 사용할 메뉴 아이디들을 타입으로 정의
+// 사용할 메뉴 아이디들을 타입으로 정의
 type ActiveType = "home" | "note" | "add" | "profile" | "";
+
 interface TitleMap {
   home: string;
   note: string;
   add: string;
   profile: string;
 }
+
 function Loginmain() {
-  // 2. 상태에 타입 적용
   const [active, setActive] = useState<ActiveType>("");
   const location = useLocation();
   const navigate = useNavigate();
 
-  // 3. 타이틀 매핑 객체에 Record 타입을 사용하여 타입 안전성 확보
   const titles: TitleMap = {
     home: "홈",
     note: "내 노트",
@@ -38,7 +38,7 @@ function Loginmain() {
     else if (path.includes("note")) setActive("note");
     else if (path.includes("add")) setActive("add");
     else if (path.includes("profile")) setActive("profile");
-    else setActive(""); // 일치하는 경로가 없을 때 초기화
+    else setActive("");
   }, [location.pathname]);
 
   return (
@@ -49,6 +49,7 @@ function Loginmain() {
           onClick={() => navigate("/home")}
           style={{ cursor: "pointer" }}
         >
+          {/* 일반 PNG 이미지는 그대로 img 태그 사용 */}
           <img src="/아이콘.png" alt="icon" />
           Rezension
         </div>
@@ -59,7 +60,7 @@ function Loginmain() {
             onClick={() => navigate("home")}
           >
             <div className="Icon">
-              <img src={RH} className="IC" alt="home" />
+              <RHome className="IC" />
             </div>
             홈
           </button>
@@ -69,7 +70,7 @@ function Loginmain() {
             onClick={() => navigate("note")}
           >
             <div className="Icon">
-              <img src={RN} className="IC" alt="note" />
+              <Rnote className="IC" />
             </div>
             내 노트
           </button>
@@ -79,7 +80,7 @@ function Loginmain() {
             onClick={() => navigate("add")}
           >
             <div className="Icon">
-              <img src={RP} className="IC" alt="add" />
+              <RPnote className="IC" />
             </div>
             노트작성
           </button>
@@ -89,14 +90,14 @@ function Loginmain() {
             onClick={() => navigate("profile")}
           >
             <div className="Icon">
-              <img src={RPR} className="ICE" alt="profile" />
+              <Rprofile className="ICE" />
             </div>
             프로필
           </button>
 
           <button className="logout">
             <div className="Icon">
-              <img src={RL} className="IC lo" alt="logout" />
+              <Rlogout className="IC lo" />
             </div>
             로그아웃
           </button>
